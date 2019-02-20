@@ -1,5 +1,8 @@
 import numpy as np
 import tensorflow as tf
+from functools import reduce
+
+
 class PosShifts(object):
   """
   Position shifts will be caused by different fields,
@@ -77,7 +80,7 @@ class DataParser(object):
     idx = idx[:feature_num]
 
     shifts = PosShifts.shift()
-    idx = [idx[i] + shifts[i] for i in xrange(len(idx))]
+    idx = [idx[i] + shifts[i] for i in range(len(idx))]
 
     idx= map(lambda one_id: np.int32(one_id), idx)
     return idx, features, label

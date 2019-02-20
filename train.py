@@ -18,26 +18,26 @@ def main():
   train_dataset_path_list = [args.training_path]
 
   val_dataset_path_list = [args.validation_path]
-  print "training path list: {}".format(train_dataset_path_list)
-  print "training path list: {}".format(val_dataset_path_list)
+  print("training path list: {}".format(train_dataset_path_list))
+  print("training path list: {}".format(val_dataset_path_list))
 
   save_model_dir = args.save_model_dir
-  print "saving model in ... {}".format(save_model_dir)
+  print("saving model in ... {}".format(save_model_dir))
 
   optimizer = args.optimizer
   learning_rate  = args.lr
-  print "we use {} as optimizer".format(optimizer)
-  print "learning rate is set as  {}".format(learning_rate)
+  print("we use {} as optimizer".format(optimizer))
+  print("learning rate is set as  {}".format(learning_rate))
 
   batch_size = args.batch_size
   embedding_size = args.embedding_size
   num_epochs = args.num_epochs
-  print "batch size: {}".format(batch_size)
-  print "embedding size: {}".format(embedding_size)
+  print("batch size: {}".format(batch_size))
+  print("embedding size: {}".format(embedding_size))
 
   task = args.task
   track = args.track
-  print "track: {}, task: {}".format(track, task)
+  print("track: {}, task: {}".format(track, task))
 
 
   model = RecommendModelHandler(
