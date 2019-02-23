@@ -68,21 +68,24 @@ class DataParser(object):
   @staticmethod
   def data_parser(line, label_index):
     """ parser line content and generate idx, features, and gts """
+    line = line.decode()
     content = line.split('\t')
     label = np.float32(content[label_index].strip())
     feature_num = 5
     features = content[:feature_num+1]
-    features = map(lambda feature: np.float32(feature), features)
+    features = [np.float32(feature) for feature in features]
     idx = [0 if feature < 0 else feature for feature in features]
     features = [np.float32(0) if feature < 0 else np.float32(1) for feature in features]
+    features = [_ for _ in features]
     features = features[:feature_num]
+    features = np.array(features, dtype=np.float32)
 
     idx = idx[:feature_num]
-
     shifts = PosShifts.shift()
-    import pdb
-    pdb.set_trace()
+
     idx = [idx[i] + shifts[i] for i in range(len(idx))]
 
     idx = map(lambda one_id: np.int32(one_id), idx)
+    idx = [_ for _ in idx]
+
     return idx, features, label
