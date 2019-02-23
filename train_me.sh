@@ -1,28 +1,30 @@
 #!/bin/bash
 cd  `dirname $0`
 echo `pwd`
-training_path='/Users/hy/Downloads/bytedance_icme_recomend/'
-validation_path=$2
+training_path="/Users/hy/Downloads/bytedance_icme_recomend/final_track2_train.txt"
+validation_path="/Users/hy/Downloads/bytedance_icme_recomend/final_track2_test_no_anwser.txt"
 echo "training path: " $training_path
 echo "validation path: " $validation_path
 
-save_model_dir=$3
+save_model_dir="/Users/hy/work/Bytedance_ICME_challenge/tmp_save_model_cpk"
 echo "save model on: " $save_model_dir
 
-batch_size=$4
-embedding_size=$5
+batch_size=10
+embedding_size=40
 echo "batch size: " $batch_size
 echo "embedding size: " $embedding_size
 
-optimizer=$6
-lr=$7
+optimizer="adam"
+lr="0.0005"
 
-task=$8
-track=$9
+task="finish"
+track=2
 echo "task: " $task
 echo "track: " $track
 
 mkdir ${save_model_dir};
+
+source activate py3
 
 python train.py \
   --training_path $training_path \
