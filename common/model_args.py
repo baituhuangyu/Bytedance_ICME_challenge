@@ -1,5 +1,6 @@
 import argparse
 
+
 def init_model_args():
   """
   Basic but important params for traning
